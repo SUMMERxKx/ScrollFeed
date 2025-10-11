@@ -62,17 +62,39 @@ const API_KEY = import.meta.env.VITE_GNEWS_API_KEY;
 
 ### Vercel (Recommended)
 1. Push your code to GitHub
-2. Import your repository at [vercel.com](https://vercel.com)
-3. Add your API key as an environment variable
-4. Deploy!
+2. Go to [vercel.com](https://vercel.com) and sign in
+3. Click "Add New" → "Project"
+4. Import your GitHub repository
+5. Configure:
+   - Framework Preset: Vite
+   - Build Command: `npm run build`
+   - Output Directory: `dist`
+6. Add environment variable:
+   - Name: `VITE_GNEWS_API_KEY`
+   - Value: Your API key
+7. Click "Deploy"
+8. Your app will be live at `https://your-project.vercel.app`
 
 ### Netlify
 1. Push your code to GitHub
-2. Import your repository at [netlify.com](https://netlify.com)
-3. Build command: `npm run build`
-4. Publish directory: `dist`
-5. Add environment variables
-6. Deploy!
+2. Go to [netlify.com](https://netlify.com) and sign in
+3. Click "Add new site" → "Import an existing project"
+4. Connect to GitHub and select your repository
+5. Configure:
+   - Build command: `npm run build`
+   - Publish directory: `dist`
+6. Click "Advanced" → "New variable":
+   - Key: `VITE_GNEWS_API_KEY`
+   - Value: Your API key
+7. Click "Deploy site"
+8. Your app will be live at `https://your-project.netlify.app`
+
+### Custom Domain (Optional)
+Both Vercel and Netlify support custom domains:
+- Purchase a domain from Namecheap, Google Domains, etc.
+- Add domain in your deployment platform's settings
+- Update DNS records as instructed
+- SSL certificate is automatically provided
 
 ## Tech Stack
 

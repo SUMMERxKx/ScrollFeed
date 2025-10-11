@@ -1,7 +1,8 @@
 {
-  "name": "scroll-feed",
+  "name": "scrollfeed",
   "private": true,
-  "version": "0.0.0",
+  "version": "1.0.0",
+  "description": "A minimal news reader for distraction-free reading",
   "type": "module",
   "scripts": {
     "dev": "vite",
