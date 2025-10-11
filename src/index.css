@@ -1,0 +1,16 @@
+/* Global Reset and Base Styles */
+html {
+  font-size: 16px;
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  overflow-y: scroll;
+}
+
+#root {
+  min-height: 100vh;
+}
