@@ -1,8 +1,8 @@
 {
   "name": "scrollfeed",
   "private": true,
-  "version": "1.0.0",
-  "description": "A minimal news reader for distraction-free reading",
+  "version": "3.0.0",
+  "description": "A minimal location-based news reader - Get news from any city worldwide",
   "type": "module",
   "scripts": {
     "dev": "vite",

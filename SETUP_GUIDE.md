@@ -2,16 +2,18 @@
 
 ## 🚀 Getting Started (5 minutes)
 
-### Step 1: Get Your API Key
-1. Visit [https://newsapi.org/register](https://newsapi.org/register)
-2. Sign up with your email
-3. Verify your email
-4. Copy your API key from the dashboard
+### Step 1: Get Your Free Guardian API Key
+1. Visit [The Guardian Open Platform](https://open-platform.theguardian.com/access/)
+2. Click "Register for a developer key"
+3. Fill out the form (describe as "personal news reader project")
+4. Check your email and copy your API key
+
+**Note:** The Guardian API is completely free with no rate limits for non-commercial use!
 
 ### Step 2: Configure the App
-Open `src/App.jsx` (line 27) and replace the API key with your actual key.
+Open `src/App.jsx` (line 14) and replace the API key with your actual key.
 
-**Note:** The demo key is already in place for testing. Replace it with your own key for production use.
+**Note:** Keep your key private - use `.env` for production (see below).
 
 ### Step 3: Install Dependencies
 ```bash
@@ -27,13 +29,14 @@ Open [http://localhost:5173](http://localhost:5173) in your browser.
 
 ## ✨ Features to Try
 
-1. **Categories** - Switch between World, Tech, Business, Sports, Science, Entertainment, Health
-2. **Search** - Use the search bar to filter articles by keyword
-3. **Click** - Click any headline to read the full article
-4. **Refresh** - Click the refresh button to get the latest news
-5. **Dark Mode** - Your system theme is automatically detected
-6. **Mobile** - Try it on your phone - it's fully responsive!
-7. **Donation** - Support the project via the footer link
+1. **Enter a location** - Type any city or region in the search box
+2. **Browse news** - See articles from the past 2 days for that location
+3. **Click articles** - Read full stories on The Guardian website
+4. **Filter results** - Use the search bar to find specific topics
+5. **Try different locations** - Click example cities or type your own
+6. **Refresh** - Get the latest updates for your location
+7. **Dark mode** - Your system theme is automatically detected
+8. **Mobile** - Try it on your phone - fully responsive!
 
 ## 🔧 Advanced Configuration
 
@@ -41,12 +44,12 @@ Open [http://localhost:5173](http://localhost:5173) in your browser.
 
 Create a `.env` file:
 ```bash
-VITE_NEWSAPI_KEY=your_api_key_here
+VITE_GUARDIAN_API_KEY=your_api_key_here
 ```
 
 Update `src/App.jsx`:
 ```javascript
-const API_KEY = import.meta.env.VITE_NEWSAPI_KEY || 'YOUR_API_KEY_HERE';
+const GUARDIAN_API_KEY = import.meta.env.VITE_GUARDIAN_API_KEY || 'YOUR_API_KEY_HERE';
 ```
 
 This keeps your API key secure and separate from your code.
@@ -65,7 +68,7 @@ This creates an optimized build in the `dist/` folder.
 2. Go to [vercel.com](https://vercel.com)
 3. Click "Add New" → "Project"
 4. Import your repository
-5. Add your API key as an environment variable
+5. Add your API key as environment variable: `VITE_GUARDIAN_API_KEY`
 6. Click "Deploy"
 
 That's it! Your app will be live in ~2 minutes.
@@ -73,53 +76,85 @@ That's it! Your app will be live in ~2 minutes.
 ## 🐛 Troubleshooting
 
 ### "Failed to fetch news"
-- Check that your API key is correct
-- Ensure you haven't exceeded the free tier limit (100 requests/day)
-- Check your internet connection
+- Check that your Guardian API key is correct
+- Ensure you have internet connection
+- Try a different location name
+- Check browser console for detailed errors
 
-### Articles not showing
-- Wait 15 minutes for the cache to expire
-- Click the refresh button to force a new fetch
-- Check browser console for errors
+### No articles showing
+- Try a more specific location (city name instead of country)
+- Some locations may have less coverage
+- Try popular cities: London, New York, Sydney
 
 ### Build errors
 - Delete `node_modules` and run `npm install` again
 - Ensure you're using Node.js 18 or higher
+- Run `npm run build` to see specific errors
 
-## 📊 API Limits
+## 📊 API Information
 
-Free tier includes:
-- 100 requests per day
-- Top headlines across 7 categories
-- Article content and metadata
-- Real-time updates
-- 50 articles per request
+**The Guardian Open Platform:**
+- ✅ Completely free
+- ✅ No rate limits (fair use policy)
+- ✅ Over 2 million articles
+- ✅ Global coverage
+- ✅ High-quality journalism
+- ✅ Real-time updates
 
-Smart caching means you use fewer API requests:
-- Each category is cached for 15 minutes
-- Switching between cached categories = 0 API requests
-- Typical user might only use 5-10 requests per day!
+**Smart Caching:**
+- Each location is cached for 15 minutes
+- Switching between cached locations = instant load
+- Typical user: almost no waiting!
 
-If you need more, check [NewsAPI pricing](https://newsapi.org/pricing).
+## 🌍 Location Tips
+
+**What works well:**
+- City names: "Vancouver", "London", "Tokyo"
+- Regions: "Silicon Valley", "Middle East"
+- Countries: "Canada", "Australia", "Japan"
+- Neighborhoods: "Manhattan", "Westminster"
+
+**What to try:**
+- Be specific: "San Francisco" works better than "California"
+- Use common names: "New York" instead of "NYC"
+- Try variations if no results appear
 
 ## 🎨 Customization Ideas
 
-- Change the cache duration (currently 15 minutes in App.jsx line 46)
-- Customize category icons (edit categoryIcons object in App.jsx)
-- Change colors in `src/App.css` and `src/DonationPage.css`
-- Add more categories (NewsAPI supports: general, business, entertainment, health, science, sports, technology)
-- Add pagination for more articles
-- Implement "save for later" functionality
-- Customize donation page links (edit DonationPage.jsx)
+- Change the cache duration (App.jsx line 47: currently 15 minutes)
+- Modify the cityscape graphic (App.jsx lines 151-165)
+- Adjust colors in `src/App.css` CSS variables
+- Change "past 2 days" to more/less (App.jsx line 57)
+- Add your own example locations (App.jsx lines 243-247)
+- Customize the date range for results
 
 ## 📚 Resources
 
 - [React Documentation](https://react.dev)
 - [Vite Documentation](https://vitejs.dev)
-- [NewsAPI Documentation](https://newsapi.org/docs)
+- [The Guardian API Docs](https://open-platform.theguardian.com/documentation/)
 - [Vercel Documentation](https://vercel.com/docs)
+
+## 💡 Pro Tips
+
+1. **Bookmark your favorite locations** - The app remembers your last location
+2. **Try broad terms** - "Europe", "Asia", "Americas" for regional news
+3. **Combine with search** - Enter a location, then filter by topic
+4. **Mobile use** - Add to home screen for quick access
+5. **Share locations** - Send friends interesting location URLs
+
+## 🌟 Example Searches
+
+Try these to see the power of location-based news:
+
+- **Technology**: "Silicon Valley", "Seattle", "Bangalore"
+- **Finance**: "Wall Street", "London", "Hong Kong"
+- **Entertainment**: "Hollywood", "Cannes", "Bollywood"
+- **Sports**: "Manchester", "Barcelona", "Melbourne"
+- **Politics**: "Washington DC", "Brussels", "Ottawa"
 
 ---
 
 Need help? Open an issue on GitHub!
 
+Enjoy discovering news from around the world! 🌍
