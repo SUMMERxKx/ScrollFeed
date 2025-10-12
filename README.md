@@ -4,13 +4,16 @@ A minimal, elegant news reader built with React and Vite. Features a clean, dist
 
 ## Features
 
-- 📰 Real-time news headlines from GNews API
+- 📰 Real-time news headlines from NewsAPI
+- 🏷️ **NEW:** Category selection (World, Tech, Business, Sports, Science, Entertainment, Health)
+- 🎨 **NEW:** Visual category icons for better UX
 - 🔍 Search and filter articles
-- 💾 Local caching for faster load times
+- 💾 Smart caching per category for faster load times
 - 🌓 Automatic dark/light mode (respects system preferences)
 - 📱 Mobile-first, responsive design
-- ⚡ Fast and lightweight
-- 🎨 Royal minimalist UI
+- ⚡ Fast and lightweight (~66KB gzipped)
+- ☕ **NEW:** Donation page to support the project
+- 🎨 Royal minimalist UI with emoji-based icons (zero bandwidth)
 
 ## Setup
 
@@ -25,14 +28,14 @@ A minimal, elegant news reader built with React and Vite. Features a clean, dist
    npm install
    ```
 
-3. **Get your GNews API key**
-   - Visit [https://gnews.io](https://gnews.io)
+3. **Get your NewsAPI key**
+   - Visit [https://newsapi.org/register](https://newsapi.org/register)
    - Sign up for a free account (100 requests/day)
    - Copy your API key
 
 4. **Configure the API key**
    - Open `src/App.jsx`
-   - Replace `YOUR_API_KEY_HERE` with your actual API key
+   - Find line 27 and replace the API key with your actual key
    - Or create a `.env` file (see below)
 
 5. **Run the development server**
@@ -50,12 +53,12 @@ A minimal, elegant news reader built with React and Vite. Features a clean, dist
 Create a `.env` file in the root directory:
 
 ```
-VITE_GNEWS_API_KEY=your_api_key_here
+VITE_NEWSAPI_KEY=your_api_key_here
 ```
 
 Then update `src/App.jsx` to use:
 ```javascript
-const API_KEY = import.meta.env.VITE_GNEWS_API_KEY;
+const API_KEY = import.meta.env.VITE_NEWSAPI_KEY || 'YOUR_API_KEY_HERE';
 ```
 
 ## Deployment
@@ -70,8 +73,8 @@ const API_KEY = import.meta.env.VITE_GNEWS_API_KEY;
    - Build Command: `npm run build`
    - Output Directory: `dist`
 6. Add environment variable:
-   - Name: `VITE_GNEWS_API_KEY`
-   - Value: Your API key
+   - Name: `VITE_NEWSAPI_KEY`
+   - Value: Your NewsAPI key
 7. Click "Deploy"
 8. Your app will be live at `https://your-project.vercel.app`
 
@@ -84,8 +87,8 @@ const API_KEY = import.meta.env.VITE_GNEWS_API_KEY;
    - Build command: `npm run build`
    - Publish directory: `dist`
 6. Click "Advanced" → "New variable":
-   - Key: `VITE_GNEWS_API_KEY`
-   - Value: Your API key
+   - Key: `VITE_NEWSAPI_KEY`
+   - Value: Your NewsAPI key
 7. Click "Deploy site"
 8. Your app will be live at `https://your-project.netlify.app`
 
@@ -101,8 +104,9 @@ Both Vercel and Netlify support custom domains:
 - **Frontend**: React 19
 - **Build Tool**: Vite
 - **Styling**: Pure CSS (no frameworks)
-- **API**: GNews.io
-- **Caching**: localStorage
+- **API**: NewsAPI.org (free tier, 100 req/day)
+- **Caching**: localStorage with per-category caching
+- **Icons**: Emoji-based (zero bandwidth)
 
 ## Design Philosophy
 
@@ -115,10 +119,12 @@ ScrollFeed embraces "royal minimalism":
 
 ## Performance
 
-- Bundle size: < 150KB gzipped
+- Bundle size: ~66KB gzipped
+- CSS: 2.45KB gzipped
 - First load: < 1s on 3G
 - Cached loads: < 200ms
 - Mobile-optimized with touch gestures
+- Category-based caching for better performance
 
 ## Browser Support
 
